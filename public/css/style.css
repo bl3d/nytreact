@@ -1,0 +1,21 @@
+/* Main styles */
+
+
+.text-center{
+	width: 100%;
+	display: block;
+}
+
+
+.saveBtn{
+	float: right;
+}
+
+
+footer{
+    min-height: 65px;
+    line-height: 65px;
+    margin-top: 65px;
+    border-top: 1px solid #ccc;	
+}
+
