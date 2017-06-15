@@ -19,10 +19,24 @@ module.exports = {
   },
   // save a specific article to db
   save: function(req, res) {
-    Article.create(req.body).then(function(doc) {
-      res.json(doc);
-    }).catch(function(err) {
-      res.json(err);
+    var article = req.body.article;
+    var result = {};
+
+    result.title = article.headline.main; 
+    result.articleDate = article.pub_date; 
+    result.url = article.web_url;
+    result.saved = true;
+
+    var entry = new Article(result);
+
+    entry.save(function(err, doc) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // console.log(doc); 
+        res.json(doc)
+      }
     });
   },
   // delete a specific article from the db

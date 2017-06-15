@@ -7,8 +7,8 @@ class Results extends Component {
   }
   render() {
     return (
-	  <li className="list-group-item" data-date="{this.props.article.pub_date}">
-		  <a href="{this.props.article.web_url}">
+	  <li className="list-group-item" data-date={this.props.article.pub_date}>
+		  <a href="this.props.article.web_url">
 		    {this.props.article.headline.main}
 	      </a>
 		  <button
@@ -22,5 +22,4 @@ class Results extends Component {
   }
 }
 
-// Exporting this component as the default (only) export
 export default Results;

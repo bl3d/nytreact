@@ -7,12 +7,11 @@ const API = {
   },  
   // get all saved articles from out db
   getSaved: function() {
-    // return axios.get("/api/articles");
-    return 'will save soon :)';
+    return axios.get("/api/articles");    
   },
   // Save article to the db
   saveArticle: function(article) {
-    return axios.post("/api/articles", { article }); 
+    return axios.post("/api/articles", { article });
   },
   // delete article from the db by id
   deleteSaved: function(id) {

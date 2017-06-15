@@ -1,15 +1,19 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+var moment = require('moment');
+var fomatted_date = moment().format('MM/DD/YY');
 
 var articleSchema = new Schema({
   title: {
     type: String,
-    unique: true,
     required: true
   },
-  date: {
+  dateSaved: {
     type: String,
-    unique: true,
+    default: fomatted_date
+  },
+  articleDate: {
+    type: String,
     required: true
   },  
   url: {

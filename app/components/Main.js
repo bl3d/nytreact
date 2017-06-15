@@ -11,21 +11,17 @@ class Main extends Component {
   constructor() {
     super();
     this.state = {
-      articles: []
+      articles: [],
+      saved: []
     };
     // Binding getArticles to component 
     this.returnAticles = this.returnAticles.bind(this);
+    this.getSaved = this.getSaved.bind(this);
   }
-  // Getting all articles when the component mounts
+  // Getting saved articles when the component mounts
   componentDidMount() {
-    // this.getArticles();
+    this.getSaved();
   } 
-  getSaved(res) {
-    /*API.getSaved().then((res) => {
-      this.setState({ saved: res.data });
-    });*/
-    console.log(res);
-  }
   returnAticles(res) {   
     let dataRes = res.data.response.docs;
     let culledArray; 
@@ -36,7 +32,6 @@ class Main extends Component {
     }; 
   }
   renderArticles() {  
-    // let data = this.state.articles;
     return this.state.articles.map((article, index) => (     
       <Results
         article={article}
@@ -45,26 +40,48 @@ class Main extends Component {
       />
     ));       
   }
+  getSaved(res) { 
+    let savedArray = []; 
+
+    API.getSaved().then((res) => {  
+      res.data.forEach(function(item){
+        savedArray.push(item);
+      });
+      
+      this.setState({ saved: savedArray });    
+    });
+  }  
+  renderSaved() {  
+    console.log('got the call to render saved');
+    console.log(this.state.saved);
+    return this.state.saved.map((saved, index) => (     
+      <Saved
+        saved={saved}
+        key={saved._id}
+        getSaved={this.getSaved}
+      />
+    ));       
+  }  
   render() {
     return (
       <div>
 	      <Header />
 	      <div className="container">        
-	        <div className="row">
+	        <div id="searchSection" className="row">
             <Panel>
   	          <SearchForm 
-  	            returnAticles={this.returnAticles}
+                returnAticles={this.returnAticles}
   	          />
             </Panel>
 	        </div>
-	        <div className="row">
+	        <div id="resultsSection" className="row">
             <Panel> 
-              {this.renderArticles()}
+              {this.renderArticles()}              
             </Panel> 
 	        </div>
-	        <div className="row">
+	        <div id="savedSection" className="row">
             <Panel> 
-              {this.getSaved()}
+              {this.renderSaved()}
             </Panel> 
 	        </div>                
 	      </div>
