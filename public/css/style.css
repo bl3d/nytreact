@@ -7,6 +7,18 @@
 }
 
 
+#searchSection{
+
+}
+
+#resultsSection{
+	/*display: none;	*/
+}
+
+#savedSection{
+	/*display: none;	*/
+}
+
 .saveBtn{
 	float: right;
 }

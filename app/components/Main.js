@@ -52,8 +52,6 @@ class Main extends Component {
     });
   }  
   renderSaved() {  
-    console.log('got the call to render saved');
-    console.log(this.state.saved);
     return this.state.saved.map((saved, index) => (     
       <Saved
         saved={saved}
