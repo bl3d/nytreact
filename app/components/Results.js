@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import API from "../utils/API";
 
 class Results extends Component {
-  saveArticle(article) {
+  saveArticle(article) { 
   	API.saveArticle(article).then(this.props.getSaved);
   }
   render() {
     return (
 	  <li className="list-group-item" data-date={this.props.article.pub_date}>
-		  <a href="this.props.article.web_url">
+		  <a href={this.props.article.web_url} target="_blank">
 		    {this.props.article.headline.main}
 	      </a>
 		  <button

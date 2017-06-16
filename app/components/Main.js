@@ -35,7 +35,7 @@ class Main extends Component {
     return this.state.articles.map((article, index) => (     
       <Results
         article={article}
-        key={article._id}
+        key={index}
         getSaved={this.getSaved}
       />
     ));       
@@ -66,22 +66,30 @@ class Main extends Component {
 	      <Header />
 	      <div className="container">        
 	        <div id="searchSection" className="row">
-            <Panel>
+            <Panel headerTitle="Search">
   	          <SearchForm 
                 returnAticles={this.returnAticles}
   	          />
             </Panel>
 	        </div>
-	        <div id="resultsSection" className="row">
-            <Panel> 
+          {(this.state.articles.length > 0) ? (
+          <div id="resultsSection" className="row">
+            <Panel headerTitle="Results"> 
               {this.renderArticles()}              
             </Panel> 
-	        </div>
-	        <div id="savedSection" className="row">
-            <Panel> 
+          </div>            
+          ) : ( 
+            <div></div>
+          )}
+          {(this.state.saved.length > 0) ? (
+          <div id="savedSection" className="row">
+            <Panel headerTitle="Saved Articles"> 
               {this.renderSaved()}
             </Panel> 
-	        </div>                
+          </div>            
+          ) : ( 
+            <div></div>
+          )}                         
 	      </div>
 	      <Footer />
       </div>

@@ -87,7 +87,7 @@ class SearchForm extends Component {
             id="run-search"
           >
             <i className="fa fa-search"></i> 
-            Search
+            &nbsp;&nbsp;Search
           </button>
 
         </form> 

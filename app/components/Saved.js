@@ -11,7 +11,7 @@ class Saved extends Component {
   render() { 
     return (
 	  <li className="list-group-item" data-date={this.props.saved.articleDate}>
-		  <a href={this.props.saved.url}>
+		  <a href={this.props.saved.url}  target="_blank">
 		    {this.props.saved.title}
 	      </a>
 		  <button
